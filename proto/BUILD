@@ -12,7 +12,7 @@ proto_library(
 go_proto_library(
     name = "echo_go_grpc",
     compilers = ["@io_bazel_rules_go//proto:go_grpc"],
-    importpath = "github.com/tcw/bazel-example/server-go/grpc",
+    importpath = "github.com/tcw/bazel-example/go/grpc",
     protos = [":echo_proto"],
     visibility = ["//visibility:public"],
 )
@@ -20,7 +20,7 @@ go_proto_library(
 go_proto_library(
     name = "echo_go_proto",
     compilers = ["@io_bazel_rules_go//proto:go_grpc"],
-    importpath = "server-go/proto",
+    importpath = "client-go/proto",
     proto = ":echo_proto",
     visibility = ["//visibility:public"],
 )
@@ -28,6 +28,6 @@ go_proto_library(
 go_library(
     name = "proto",
     embed = [":echo_go_proto"],
-    importpath = "server-go/proto",
+    importpath = "client-go/proto",
     visibility = ["//visibility:public"],
 )

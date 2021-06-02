@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	pb "github.com/tcw/bazel-example/server-go/grpc"
+	pb "github.com/tcw/bazel-example/go/grpc"
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -11,8 +11,9 @@ import (
 type server struct{}
 
 func (server) Echo(_ context.Context, in *pb.EchoIn) (*pb.EchoOut, error) {
+	log.Printf("server received: %s\n", in.Message)
 	return &pb.EchoOut{
-		Message: in.Message,
+		Message: in.Message ,
 	}, nil
 }
 
