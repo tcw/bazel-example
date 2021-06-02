@@ -1,17 +1,14 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
-load("@rules_proto_grpc//go:defs.bzl", "go_grpc_compile") #keep
-
-#keep
-go_grpc_compile(
-    name = "ibsen_go_grpc",
-    protos = ["//proto:ibsen_proto"],
-)
 
 go_library(
     name = "server-go_lib",
-    srcs = ["hello.go"],
+    srcs = ["echo.go"],
     importpath = "server-go/server-go",
     visibility = ["//visibility:private"],
+    deps = [
+        "//proto:echo_go_grpc",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
 )
 
 go_binary(

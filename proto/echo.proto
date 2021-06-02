@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "github.com.tcw.echo";
+option java_outer_classname = "EchoProto";
+option objc_class_prefix = "ECHO";
+
+service Echo {
+
+    rpc echo (EchoIn) returns (EchoOut) {
+    }
+}
+
+message EchoIn {
+    string message = 1;
+}
+
+message EchoOut {
+    string message = 1;
+}
+
